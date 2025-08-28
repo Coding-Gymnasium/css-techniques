@@ -1,0 +1,101 @@
+@property --deg {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0deg;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #0e2136;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+}
+
+.box {
+  background: #142d4a;
+  height: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box::before,
+.box::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: conic-gradient(
+    from var(--deg) at center,
+    #00ceff,
+    #4d0199,
+    #6300c6,
+    #009dcd
+  );
+  border-radius: inherit;
+  z-index: -2;
+  padding: 2px;
+  animation: autoRotate 5s linear infinite;
+}
+.box::after {
+  filter: blur(10px);
+}
+
+.box-red {
+  background: #a82400;
+  height: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-red::before,
+.box-red::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: conic-gradient(
+    from var(--deg) at center,
+    #ff5c00,
+    #ff9f00,
+    #ff5c00,
+    #ff9f00
+  );
+  border-radius: inherit;
+  z-index: -2;
+  padding: 3px;
+  animation: autoRotateCounterClockwise 5s linear infinite;
+}
+.box-red::after {
+  filter: blur(10px);
+}
+
+@keyframes autoRotate {
+  0% {
+    --deg: 0deg;
+  }
+  100% {
+    --deg: 360deg;
+  }
+}
+
+@keyframes autoRotateCounterClockwise {
+  0% {
+    --deg: 0deg;
+  }
+  100% {
+    --deg: -360deg;
+  }
+}
