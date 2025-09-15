@@ -5,6 +5,6 @@ const observer = new IntersectionObserver((entries) => {
   } else {
     entries[0].target.classList.remove("show");
   }
-}, {threshold: 0.5});
+}, {threshold: 0.3});
 
 observer.observe(section);

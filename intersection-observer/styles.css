@@ -53,47 +53,46 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 120px);
   grid-gap: 1rem;
-  grid-template-areas:
-    "img-1 img-1 img-2 img-3"
-    "img-4 img-5 img-2 img-3"
-    "img-4 img-6 img-6 img-3";
   margin-bottom: 2rem;
-}
-
-.grid-container img[style*="img-1"] {
-  grid-area: img-1;
-  height: 100%;
-}
-.grid-container img[style*="img-2"] {
-  grid-area: img-2;
-  height: 100%;
-}
-.grid-container img[style*="img-3"] {
-  grid-area: img-3;
-  height: 100%;
-}
-.grid-container img[style*="img-4"] {
-  grid-area: img-4;
-  height: 100%;
-}
-.grid-container img[style*="img-5"] {
-  grid-area: img-5;
-  height: 100%;
-}
-.grid-container img[style*="img-6"] {
-  grid-area: img-6;
-  height: 100%;
+  grid-template-columns: 1fr;
+  grid-auto-rows: 200px; /* This ensures each image gets its own row */
 }
 
 .grid-container img {
   width: 100%;
+  height: 200px; /* Fixed height for mobile */
   object-fit: cover;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: block;
+  /* Remove any grid-area assignments for mobile */
+  grid-area: auto;
+}
+
+/* Desktop: Bento grid layout */
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 120px);
+    grid-template-areas:
+      "img-1 img-1 img-2 img-3"
+      "img-4 img-5 img-2 img-3"
+      "img-4 img-6 img-6 img-3";
+    grid-auto-rows: unset;
+  }
+
+  .grid-container img {
+    height: 100%;
+    grid-area: auto;
+  }
+
+  .grid-container img.img-1 { grid-area: img-1; }
+  .grid-container img.img-2 { grid-area: img-2; }
+  .grid-container img.img-3 { grid-area: img-3; }
+  .grid-container img.img-4 { grid-area: img-4; }
+  .grid-container img.img-5 { grid-area: img-5; }
+  .grid-container img.img-6 { grid-area: img-6; }
 }
 
 .cta-button {
