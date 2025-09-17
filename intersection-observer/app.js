@@ -1,10 +1,16 @@
 const section = document.querySelector("#my-work");
+const images = section.querySelectorAll("#my-work img");
 const observer = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    entries[0].target.classList.add("show");
-  } else {
-    entries[0].target.classList.remove("show");
-  }
-}, {threshold: 0.3});
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+    } else {
+      entry.target.classList.remove("show");
+    }
+  });
+}, {threshold: 0});
 
-observer.observe(section);
+images.forEach(image => {
+  observer.observe(image);
+});
+
