@@ -6,7 +6,7 @@
 
 .hero {
   width: 100%;
-  height: 100vh; /* Always fill the full viewport height */
+  height: 90vh;
   padding: 0;
   background: #f7f7f7;
 }
@@ -14,21 +14,19 @@
 .hero-stack {
   display: grid;
   place-items: center;
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+  height: 90vh;
+  max-width: 100vw;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 }
 
 .hero-img {
   grid-area: 1 / 1;
-  width: 100%;
   height: 100%;
+  width: 100%;
+  max-height: 90vh;
   object-fit: cover;
   filter: brightness(0.7);
-  border-radius: 0;
-  margin-bottom: 0;
-  box-shadow: none;
 }
 
 .hero-title {
@@ -40,19 +38,8 @@
   z-index: 1;
   text-align: center;
   padding: 0 2rem;
-}
-
-/* More aggressive responsive sizing for very small screens */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-height: 500px) {
-  .hero-title {
-    font-size: 2rem; /* Even smaller on very short screens */
-  }
+  justify-self: center;
+  align-self: center;
 }
 
 #my-work {
@@ -72,7 +59,7 @@
   grid-gap: 1rem;
   margin-bottom: 2rem;
   grid-template-columns: 1fr;
-  grid-auto-rows: 200px; /* This ensures each image gets its own row */
+  grid-auto-rows: 200px;
 }
 
 .grid-container img {
@@ -100,12 +87,24 @@
     height: 100%;
   }
 
-  .grid-container img.img-1 { grid-area: img-1; }
-  .grid-container img.img-2 { grid-area: img-2; }
-  .grid-container img.img-3 { grid-area: img-3; }
-  .grid-container img.img-4 { grid-area: img-4; }
-  .grid-container img.img-5 { grid-area: img-5; }
-  .grid-container img.img-6 { grid-area: img-6; }
+  .grid-container img.img-1 {
+    grid-area: img-1;
+  }
+  .grid-container img.img-2 {
+    grid-area: img-2;
+  }
+  .grid-container img.img-3 {
+    grid-area: img-3;
+  }
+  .grid-container img.img-4 {
+    grid-area: img-4;
+  }
+  .grid-container img.img-5 {
+    grid-area: img-5;
+  }
+  .grid-container img.img-6 {
+    grid-area: img-6;
+  }
 }
 
 .cta-button {
@@ -123,7 +122,7 @@
 }
 
 #my-work img {
-  translate: -100%;  /* Changed from -100vw to -100% */
+  translate: -100%; /* Changed from -100vw to -100% */
   opacity: 0;
   transition: 800ms ease;
 }
@@ -131,4 +130,13 @@
 #my-work img.show {
   translate: 0;
   opacity: 1;
+}
+
+@media (max-width: 740px) {
+  .hero-title {
+    font-size: 5vh;
+  }
+  #my-work h2 {
+    font-size: 4vh;
+  }
 }
